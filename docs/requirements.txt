@@ -6,6 +6,12 @@ sphinx_gallery
 sphinx-argparse
 sphinx-issues
 gunicorn
+dash
+plotly
+requests
+pandas
+
+
 #
 # Example requirements
 #
