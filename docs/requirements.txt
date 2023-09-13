@@ -5,7 +5,7 @@ sphinx_rtd_theme
 sphinx_gallery
 sphinx-argparse
 sphinx-issues
-
+gunicorn
 #
 # Example requirements
 #
