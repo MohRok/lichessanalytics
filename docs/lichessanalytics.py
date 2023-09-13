@@ -199,5 +199,30 @@ def toggle_sidebar(n_clicks):
 
 
 if __name__ == '__main__':
-    webbrowser.open_new_tab('http://localhost:8050')
+    with open("index.html", "w") as file:
+        file.write("""
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>lichessanalytics.py</title>
+        <!-- Füge hier deine benutzerdefinierten CSS-Dateien oder -Stile hinzu -->
+        <!-- Zum Beispiel: <link rel="stylesheet" href="mein-stil.css"> -->
+    </head>
+    <body>
+        <div id="app-content">
+            
+            {%app_entry%}
+        </div>
+        <script src="/_dash-component-suites/dash/dash.js"></script>
+        <script src="/_dash-component-suites/dash-renderer/dash-renderer.js"></script>
+        <script src="/_dash-component-suites/dash-core-components/dash-core-components.js"></script>
+        <script src="/_dash-component-suites/dash-html-components/dash-html-components.js"></script>
+        <script src="/_dash-component-suites/dash-table/dash-table.js"></script>
+        <script src="/assets/app.js"></script>
+    </body>
+    </html>
+    
+""")
+
     app.run_server(debug=True)
