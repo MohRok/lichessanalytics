@@ -1,11 +1,11 @@
 import webbrowser
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, dash
 import plotly.graph_objs as go
 from dash.exceptions import PreventUpdate
-# Initialize the Dash app
-app = Dash(__name__)
-server = app.server
 
+# Initialize the Dash app
+app = dash.Dash(meta_tags=[ {"name": "viewport", "content": "width=device-width, initial-scale=1"}])
+server = app.server
 # Define custom CSS styles
 custom_styles = {
     'navbar': {
@@ -48,8 +48,9 @@ app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content'),
     html.Div([
-        html.Img(src="/assets/lichesslogo.png", alt="foto", width="300px",
-                 style={'position': 'absolute', 'top': '0px', 'right': '0px'}),
+        html.Img(src="/assets/lichesslogo.png", alt="foto",
+                 style={'display': 'flex',  'width': "100%", 'max-width': '300px', 'position': 'absolute', 'top': '0px',
+                        'right': '0px'}),
     ]),
     html.Nav(
         children=[
@@ -70,15 +71,14 @@ app.layout = html.Div([
     ], style=custom_styles['nav_dropdown']),
     html.Div(id='graph-content', style={'text-align': 'center', 'margin-top': '150px'}),
 
-
 ])
 
 # Layout of the home page content
 home_layout = html.Div([
     html.Div([
         html.H1("Welcome to Data Science Project Lichess Page", style={'margin-right': '20px'}),
-        html.P("Team: Michel, Mohamad, Viktoria.", style={'font-size': '24px'}),
-    ], style={'display': 'flex', 'align-items': 'center'}),
+    ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center'}),
+    html.P("Team: Michel, Mohamad, Viktoria.", style={'font-size': '24px'}),
 ], style={'background-image': 'linear-gradient(to bottom, gray, white)', 'color': 'black', 'padding': '10px'})
 
 # Layout for Option 1 content
@@ -97,7 +97,7 @@ option2_layout = html.Div([
         html.P("This is the content for Option 2.", style={'font-size': '24px'}),
     ], style={'display': 'flex', 'align-items': 'center'}),
 ], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
-          'display': 'flex', 'justify-content': 'link', 'align-items': 'center'},)
+          'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
 
 # Layout for Option 3 content
 option3_layout = html.Div([
@@ -201,3 +201,4 @@ def toggle_sidebar(n_clicks):
 if __name__ == '__main__':
     webbrowser.open_new_tab('http://localhost:8050')
     app.run_server(debug=True)
+
