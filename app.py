@@ -1,7 +1,7 @@
-import webbrowser
-from dash import Dash, dcc, html, Input, Output
-import plotly.graph_objs as go
-from dash.exceptions import PreventUpdate
+#import webbrowser
+#from dash import Dash, dcc, html, Input, Output
+#import plotly.graph_objs as go
+#from dash.exceptions import PreventUpdate
 
 # Initialize the Dash app
 app = Dash(__name__)
@@ -199,5 +199,5 @@ def toggle_sidebar(n_clicks):
 
 
 if __name__ == '__main__':
-    webbrowser.open_new_tab('http://localhost:8050')
+    #webbrowser.open_new_tab('http://localhost:8050')
     app.run_server(debug=True)
