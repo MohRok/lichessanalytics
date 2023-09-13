@@ -70,7 +70,6 @@ app.layout = html.Div([
     ], style=custom_styles['nav_dropdown']),
     html.Div(id='graph-content', style={'text-align': 'center', 'margin-top': '150px'}),
 
-
 ])
 
 # Layout of the home page content
@@ -97,7 +96,7 @@ option2_layout = html.Div([
         html.P("This is the content for Option 2.", style={'font-size': '24px'}),
     ], style={'display': 'flex', 'align-items': 'center'}),
 ], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
-          'display': 'flex', 'justify-content': 'link', 'align-items': 'center'},)
+          'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
 
 # Layout for Option 3 content
 option3_layout = html.Div([
@@ -199,4 +198,5 @@ def toggle_sidebar(n_clicks):
 
 
 if __name__ == '__main__':
+    webbrowser.open_new_tab('http://localhost:8050')
     app.run_server(debug=True)

@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/home/mohamad/Documents/UNI Kiel/DSProj/lichess_analytics/venv/bin/python" "$0" "$@"
-' '''
+#!/home/mohamad/Desktop/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
