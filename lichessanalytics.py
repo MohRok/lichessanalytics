@@ -4,6 +4,7 @@ import plotly.graph_objs as go
 from dash.exceptions import PreventUpdate
 # Initialize the Dash app
 app = Dash(__name__)
+server = app.server
 
 # Define custom CSS styles
 custom_styles = {
