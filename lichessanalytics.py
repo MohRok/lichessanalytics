@@ -1,10 +1,10 @@
 import webbrowser
-from dash import Dash, dcc, html, Input, Output, dash
+from dash import Dash, dcc, html, Input, Output
 import plotly.graph_objs as go
 from dash.exceptions import PreventUpdate
 
 # Initialize the Dash app
-app = dash.Dash(meta_tags=[ {"name": "viewport", "content": "width=device-width, initial-scale=1"}])
+app = Dash(__name__)
 server = app.server
 # Define custom CSS styles
 custom_styles = {
@@ -198,7 +198,7 @@ def toggle_sidebar(n_clicks):
                 'background-image': 'linear-gradient(to top, gray, white)', 'padding': '0px'}
 
 
-if meta_tags=[ {"name": "viewport", "content": "width=device-width, initial-scale=1"}] == '__main__':
+if __name__ == '__main__':
     #webbrowser.open_new_tab('http://localhost:8050')
     app.run_server(debug=True)
 
