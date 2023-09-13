@@ -4,7 +4,7 @@ import plotly.graph_objs as go
 from dash.exceptions import PreventUpdate
 
 # Initialize the Dash app
-app = dash.Dash(meta_tags=[ {"name": "viewport", "content": "width=device-width, initial-scale=1"}])
+app = Dash(meta_tags=[ {"name": "viewport", "content": "width=device-width, initial-scale=1"}])
 server = app.server
 # Define custom CSS styles
 custom_styles = {
