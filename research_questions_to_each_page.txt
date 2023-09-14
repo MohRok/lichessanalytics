@@ -1,0 +1,6 @@
+1) Does castling early helps to win a match?
+2) Do the games in which the rooks are activated early result in a win?
+3) Casteling on which side results in a win? How does casteling effects the outcome of a game?
+4) Does having bishops or knights during an endgame result in a win?
+5) What openings are played by the groups of players belonging to different game modes?
+6) What openings are played by the groups of players belonging to different rating categories?
