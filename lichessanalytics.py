@@ -43,8 +43,8 @@ app.layout = html.Div([
     html.Nav(
         children=[
             html.A("Home", href="/", style=custom_styles['nav_link']),
-            html.A("rating correlation", href="/options/option1", style=custom_styles['nav_link']),
-            html.A("rating history", href="/options/option2", style=custom_styles['nav_link']),
+            html.A("Rating Correlation", href="/options/option1", style=custom_styles['nav_link']),
+            html.A("Rating History", href="/options/option2", style=custom_styles['nav_link']),
             html.A(" Castling & Rooks", href="/options/option3", style=custom_styles['nav_link']),
             html.A("Bishops vs Knights", href="/options/option4", style=custom_styles['nav_link']),
             html.A("Openings", href="/options/option5", style=custom_styles['nav_link']),
@@ -70,8 +70,8 @@ home_layout = html.Div([
 # Layout for Option 1 content
 option1_layout = html.Div([
     html.Div([
-        html.H1("rating correlation", style={'margin-right': '20px'}),
-        html.P("This is the content for rating correlation.", style={'font-size': '24px'}),
+        html.H1("Rating Correlation", style={'margin-right': '20px'}),
+        html.P("This is the content for Rating Correlation.", style={'font-size': '24px'}),
     ], style={'display': 'flex', 'align-items': 'center'}),
 ], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
           'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
@@ -79,8 +79,8 @@ option1_layout = html.Div([
 # Layout for Option 2 content
 option2_layout = html.Div([
     html.Div([
-        html.H1("rating history", style={'margin-right': '20px'}),
-        html.P("This is the content for rating history.", style={'font-size': '24px'}),
+        html.H1("Rating History", style={'margin-right': '20px'}),
+        html.P("This is the content for Rating History.", style={'font-size': '24px'}),
     ], style={'display': 'flex', 'align-items': 'center'}),
 ], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
           'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
@@ -185,13 +185,10 @@ def update_graph(pathname):
                    "Classical and Rapid."
                    "The main difference between them is their duration."
                    "For our analysis we have mainly focused on the game-mode Rapid,"
-                   "where players only have 10 minutes each to make all of their moves in"
-                   "the entire game."
+                   "where players only have 10 minutes each to make all of their moves in the entire game."
                    "A player loses if their king is checkmated or if they run out of time."
-                   "Our project is aimed at answering some questions regarding players’"
-                   "improvement and game strategies. For this purpose we analyzed"
-                   "approximately 32,000 high-rated rapid games, roughly 122,000"
-                   "amateur rapid matches and almost 700,000 high-rated blitz games. ")])
+                   "Our project is aimed at answering some questions regarding players’ improvement and game strategies. For this purpose we analyzed"
+                   "approximately 32,000 high-rated rapid games, roughly 122,000 amateur rapid matches and almost 700,000 high-rated blitz games. ")])
 
     elif pathname == '/options/option1':
         with open("number_of_games.json", "r") as file:
@@ -269,7 +266,7 @@ def update_graph(pathname):
             html.H3("Do the games in which the rooks are activated early result in a win?"),
             dcc.Graph(id='option3-chart-2', figure=fig2_a),
             html.H3("Castling on which side results in a win? How does castling affect the outcome of a game?"),
-            dcc.Graph(id='option3-chart-3', figure=fig2_a)])
+            dcc.Graph(id='option3-chart-3', figure=fig3_a)])
 
     elif pathname == '/options/option4':
         with open("4_a_bishop_vs_knight_BAR.json", "r") as file:
