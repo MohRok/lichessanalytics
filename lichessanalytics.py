@@ -48,7 +48,7 @@ app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content'),
     html.Div([
-        html.Img(src="/assets/lichesslogo.png", alt="foto", width="300px",
+        html.Img(src="/assets/lichesslogo.png", alt="foto", width="15%", lang="15%",
                  style={'position': 'absolute', 'top': '0px', 'right': '0px'}),
     ]),
     html.Nav(
