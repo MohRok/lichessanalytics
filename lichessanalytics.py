@@ -1,6 +1,7 @@
 import webbrowser
 from dash import Dash, dcc, html, Input, Output
 import plotly.graph_objs as go
+import plotly.io as pio
 from dash.exceptions import PreventUpdate
 
 # Initialize the Dash app
