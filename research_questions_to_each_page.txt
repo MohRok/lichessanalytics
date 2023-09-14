@@ -2,7 +2,7 @@
    1_a_castling_early_VIOLIN.json
 2) Do the games in which the rooks are activated early result in a win?
    2_a_rook_act_early_VIOLIN.json
-3) Casteling on which side results in a win? How does casteling effects the outcome of a game?
+3) Castling on which side results in a win? How does castling effects the outcome of a game?
    3_a_castle_which_side_BAR.json
 4) Does having bishops or knights during an endgame result in a win?
    4_a_bishop_vs_knight_BAR.json
@@ -21,7 +21,7 @@ Option5:        Openings                   5, 6
 
 
 #diesen Text bitte auf die Seite Openings hinzufügen:
-Visit https://www.chessprogramming.org/ECO for informaition about openings categorization.
+Visit https://www.chessprogramming.org/ECO for information about openings categorization.
 
 
 
