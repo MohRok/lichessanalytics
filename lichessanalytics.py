@@ -130,22 +130,11 @@ def display_page(pathname):
     Input('url', 'pathname')
 )
 def update_graph(pathname):
-    if pathname == '/options/option1':
-        return dcc.Graph(
-            id='option1-chart',
-            figure={
-                'data': [
-                    go.Bar(
-                        x=['Category A', 'Category B', 'Category C'],
-                        y=[10, 20, 30],
-                        name='Option 1 Data',
-                    ),
-                ],
-                'layout': {
-                    'title': 'Option 1 Chart',
-                },
-            }
-        )
+        if pathname == '/options/option1':
+        with open("number_of_games_fig.json", "r") as file:
+            number_of_games_fig = pio.from_json(file.read())
+
+        return dcc.Graph(id='option1-chart', figure=number_of_games_fig)
     elif pathname == '/options/option2':
         return dcc.Graph(
             id='option2-chart',
