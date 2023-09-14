@@ -16,5 +16,5 @@
 OptionOldName   Option name               Dateien rein           
     
 Option3:        Castling & Rooks           1,2,3 
-Option4:        Bishops vs Knights         4
+Option4:        Bishops vs. Knights         4
 Option5:        Openings                   5, 6
