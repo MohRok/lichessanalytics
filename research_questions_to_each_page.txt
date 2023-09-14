@@ -21,7 +21,7 @@ Option5:        Openings                   5, 6
 
 
 #diesen Text bitte auf die Seite Openings hinzufügen:
-Visit https://www.chessprogramming.org/ECO more about openings categorization.
+Visit https://www.chessprogramming.org/ECO for informaition about openings categorization.
 
 
 
