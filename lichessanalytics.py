@@ -131,7 +131,7 @@ def display_page(pathname):
     Input('url', 'pathname')
 )
 def update_graph(pathname):
-        if pathname == '/options/option1':
+    if pathname == '/options/option1':
         with open("number_of_games_fig.json", "r") as file:
             number_of_games_fig = pio.from_json(file.read())
 
