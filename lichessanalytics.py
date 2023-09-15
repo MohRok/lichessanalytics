@@ -71,7 +71,6 @@ home_layout = html.Div([
 option1_layout = html.Div([
     html.Div([
         html.H1("Rating Correlation", style={'margin-right': '20px'}),
-        html.P("This is the content for Rating Correlation.", style={'font-size': '24px'}),
     ], style={'display': 'flex', 'align-items': 'center'}),
 ], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
           'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
@@ -80,7 +79,6 @@ option1_layout = html.Div([
 option2_layout = html.Div([
     html.Div([
         html.H1("Rating History", style={'margin-right': '20px'}),
-        html.P("This is the content for Rating History.", style={'font-size': '24px'}),
     ], style={'display': 'flex', 'align-items': 'center'}),
 ], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
           'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
@@ -89,7 +87,6 @@ option2_layout = html.Div([
 option3_layout = html.Div([
     html.Div([
         html.H1("Castling & Rooks", style={'margin-right': '20px'}),
-        html.P("This is the content for Castling & Rooks.", style={'font-size': '24px'}),
     ], style={'display': 'flex', 'align-items': 'center'}),
 ], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
           'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}),
@@ -98,7 +95,6 @@ option3_layout = html.Div([
 option4_layout = html.Div([
     html.Div([
         html.H1(" Bishops vs. Knights", style={'margin-right': '20px'}),
-        html.P("This is the content for Bishops vs. Knights.", style={'font-size': '24px'}),
     ], style={'display': 'flex', 'align-items': 'center'}),
 ], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
           'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
@@ -107,7 +103,6 @@ option4_layout = html.Div([
 option5_layout = html.Div([
     html.Div([
         html.H1("Openings", style={'margin-right': '20px'}),
-        html.P("This is the content for Openings.", style={'font-size': '24px'}),
     ], style={'display': 'flex', 'align-items': 'center'}),
 ], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
           'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
@@ -187,8 +182,10 @@ def update_graph(pathname):
                    "For our analysis we have mainly focused on the game-mode Rapid,"
                    "where players only have 10 minutes each to make all of their moves in the entire game."
                    "A player loses if their king is checkmated or if they run out of time."
-                   "Our project is aimed at answering some questions regarding players’ improvement and game strategies. For this purpose we analyzed"
-                   "approximately 32,000 high-rated rapid games, roughly 122,000 amateur rapid matches and almost 700,000 high-rated blitz games. ")])
+                   "Our project is aimed at answering some questions regarding players’ "
+                   "improvement and game strategies. For this purpose we analyzed"
+                   "approximately 32,000 high-rated rapid games, "
+                   "roughly 122,000 amateur rapid matches and almost 700,000 high-rated blitz games. ")])
 
     elif pathname == '/options/option1':
         with open("number_of_games.json", "r") as file:
@@ -271,10 +268,13 @@ def update_graph(pathname):
     elif pathname == '/options/option4':
         with open("4_a_bishop_vs_knight_BAR.json", "r") as file:
             fig4_a = pio.from_json(file.read())
+        with open("4_b_bishop_vs_knight_BAR.json", "r") as file:
+            fig4_b = pio.from_json(file.read())
 
         return html.Div([
             html.H3("Does having bishops or knights during an endgame result in a win?"),
             dcc.Graph(id='option4-chart-1', figure=fig4_a),
+            dcc.Graph(id='option4-chart-1', figure=fig4_b),
         ])
 
     elif pathname == '/options/option5':
