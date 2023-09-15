@@ -1,4 +1,3 @@
-import webbrowser
 from dash import Dash, dcc, html, Input, Output
 import plotly.graph_objs as go
 import plotly.io as pio
@@ -7,6 +6,7 @@ from dash.exceptions import PreventUpdate
 # Initialize the Dash app
 app = Dash(__name__)
 server = app.server
+
 # Define custom CSS styles
 custom_styles = {
     'navbar': {
@@ -24,7 +24,7 @@ custom_styles = {
         'padding': '0',
     },
     'nav_link': {
-        'text-decoration': 'none',
+        'text-decoration': 'None',
         'color': 'inherit',
         'margin-right': '60px',
         'font-weight': 'bold',
@@ -43,16 +43,15 @@ app.layout = html.Div([
     html.Nav(
         children=[
             html.A("Home", href="/", style=custom_styles['nav_link']),
+            html.A("Distributions on Lichess", href="/options/option0", style=custom_styles['nav_link']),
             html.A("Rating Correlation", href="/options/option1", style=custom_styles['nav_link']),
             html.A("Rating History", href="/options/option2", style=custom_styles['nav_link']),
             html.A(" Castling & Rooks", href="/options/option3", style=custom_styles['nav_link']),
             html.A("Bishops vs Knights", href="/options/option4", style=custom_styles['nav_link']),
             html.A("Openings", href="/options/option5", style=custom_styles['nav_link']),
-            html.A("Option 6", href="/options/option6", style=custom_styles['nav_link']),
-            html.A("Option 7", href="/options/option7", style=custom_styles['nav_link']),
-            html.A("Option 8", href="/options/option8", style=custom_styles['nav_link']),
+
         ],
-        style={'background-image': 'linear-gradient(to left, black, white)', 'color': 'black', 'padding': '10px',
+        style={'background-image': 'linear-gradient(to left, black, white)', 'color': 'black', 'padding': '20px',
                'display': 'flex', 'justify-content': 'link', 'align-items': 'center'},
     ),
     html.Div(id='graph-content', style={'text-align': 'center', 'margin-top': '150px'}),
@@ -62,10 +61,18 @@ app.layout = html.Div([
 # Layout of the home page content
 home_layout = html.Div([
     html.Div([
-        html.H1("Welcome to Data Science Project Lichess Page", style={'margin-right': '20px'}),
+        html.H1("Welcome to Data Science Project Lichess Page", style={'margin-right': '30%'}),
     ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center'}),
     html.P("Team: Michel, Mohamad, Viktoria.", style={'font-size': '24px'}),
 ], style={'background-image': 'linear-gradient(to bottom, gray, white)', 'color': 'black', 'padding': '10px'})
+
+# Layout for Option 1 content
+option0_layout = html.Div([
+    html.Div([
+        html.H1("Distributions on Lichess", style={'margin-right': '20px'}),
+    ], style={'display': 'flex', 'align-items': 'center'}),
+], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
+          'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
 
 # Layout for Option 1 content
 option1_layout = html.Div([
@@ -107,33 +114,6 @@ option5_layout = html.Div([
 ], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
           'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
 
-# Layout for Option 6 content
-option6_layout = html.Div([
-    html.Div([
-        html.H1("Option 6", style={'margin-right': '20px'}),
-        html.P("This is the content for Option 6.", style={'font-size': '24px'}),
-    ], style={'display': 'flex', 'align-items': 'center'}),
-], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
-          'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
-
-# Layout for Option 7 content
-option7_layout = html.Div([
-    html.Div([
-        html.H1("Option 7", style={'margin-right': '20px'}),
-        html.P("This is the content for Option 7.", style={'font-size': '24px'}),
-    ], style={'display': 'flex', 'align-items': 'center'}),
-], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
-          'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
-
-# Layout for Option 8 content
-option8_layout = html.Div([
-    html.Div([
-        html.H1("Option 8", style={'margin-right': '20px'}),
-        html.P("This is the content for Option 8.", style={'font-size': '24px'}),
-    ], style={'display': 'flex', 'align-items': 'center'}),
-], style={'background-image': 'linear-gradient(to Bottom, gray, white)', 'color': 'black', 'padding': '10px',
-          'display': 'flex', 'justify-content': 'link', 'align-items': 'center'}, )
-
 
 # Callback function to display the appropriate content based on URL pathname
 @app.callback(
@@ -141,7 +121,9 @@ option8_layout = html.Div([
     Input("url", "pathname"),
 )
 def display_page(pathname):
-    if pathname == "/options/option1":
+    if pathname == "/options/option0":
+        return option0_layout
+    elif pathname == "/options/option1":
         return option1_layout
     elif pathname == "/options/option2":
         return option2_layout
@@ -151,13 +133,6 @@ def display_page(pathname):
         return option4_layout
     elif pathname == "/options/option5":
         return option5_layout
-    elif pathname == "/options/option6":
-        return option6_layout
-    elif pathname == "/options/option7":
-        return option7_layout
-    elif pathname == "/options/option8":
-        return option8_layout
-
     elif pathname == '/':
         return home_layout
     else:
@@ -171,6 +146,9 @@ def display_page(pathname):
     Input('url', 'pathname')
 )
 def update_graph(pathname):
+    config = {'modeBarButtonsToRemove': ['autoscale2d', 'lasso2d', 'select2d'], 'displaylogo': False,
+              'displayModeBar': True}
+
     if pathname == '/':
         return html.Div([
             html.H3("About our project", style={'font-size': '24px'}),
@@ -187,6 +165,18 @@ def update_graph(pathname):
                    "approximately 32,000 high-rated rapid games, "
                    "roughly 122,000 amateur rapid matches and almost 700,000 high-rated blitz games. ")])
 
+    elif pathname == '/options/option0':
+        with open("rating_distribution.json", "r") as file:
+            rating_distribution = pio.from_json(file.read())
+        with open("games_distribution.json", "r") as file:
+            games_distribution = pio.from_json(file.read())
+
+        return html.Div([
+            html.H3("How is the rating distributed on Lichess.org?"),
+            dcc.Graph(id='option0-chart-1', figure=rating_distribution, config=config),
+            html.H3("How many games have the players played?"),
+            dcc.Graph(id='option0-chart-2', figure=games_distribution, config=config)])
+
     elif pathname == '/options/option1':
         with open("number_of_games.json", "r") as file:
             number_of_games_fig = pio.from_json(file.read())
@@ -196,59 +186,25 @@ def update_graph(pathname):
             puzzle_rating = pio.from_json(file.read())
 
         return html.Div([
-            dcc.Graph(id='option1-chart-1', figure=number_of_games_fig),
-            dcc.Graph(id='option1-chart-2', figure=number_of_puzzles),
-            dcc.Graph(id='option1-chart-3', figure=puzzle_rating)])
+            html.H3("How many games have players of different elo-ratings played?"),
+            dcc.Graph(id='option1-chart-1', figure=number_of_games_fig, config=config),
+            html.H3("How many puzzles have players of different elo-ratings solved?"),
+            dcc.Graph(id='option1-chart-2', figure=number_of_puzzles, config=config),
+            html.H3("How high of a puzzle-rating do players of different elo-ratings have?"),
+            dcc.Graph(id='option1-chart-3', figure=puzzle_rating, config=config)])
 
     elif pathname == '/options/option2':
+        with open("rating_history_ranks.json", "r") as file:
+            rating_history_ranks = pio.from_json(file.read())
+        with open("rank_distribution.json", "r") as file:
+            rank_distribution = pio.from_json(file.read())
 
         return html.Div([
-            dcc.Graph(id='option2-chart',
-                      figure={
-                          'data': [
-                              go.Scatter(
-                                  x=[1, 2, 3, 4, 5],
-                                  y=[10, 11, 12, 13, 14],
-                                  mode='markers',
-                                  name='Option 2 Data',
-                              ),
-                          ],
-                          'layout': {
-                              'title': 'Option 2 Chart',
-                          },
-                      }),
-            dcc.Graph(id='option2-chart',
-                      figure={
-                          'data': [
-                              go.Scatter(
-                                  x=[1, 2, 3, 4, 5],
-                                  y=[10, 11, 12, 13, 14],
-                                  mode='markers',
-                                  name='Option 2 Data',
-                              ),
-                          ],
-                          'layout': {
-                              'title': 'Option 2 Chart',
-                          },
-                      }),
-            dcc.Graph(
-                id='option2-chart',
-                figure={
-                    'data': [
-                        go.Scatter(
-                            x=[1, 2, 3, 4, 5],
-                            y=[10, 11, 12, 13, 14],
-                            mode='markers',
-                            name='Option 2 Data',
-                        ),
-                    ],
-                    'layout': {
-                        'title': 'Option 2 Chart',
-                    },
-                }
+            html.H3("How did the average Rating of the Ranks develop over time?"),
+            dcc.Graph(id='option1-chart-1', figure=rating_history_ranks, config=config),
+            html.H3("How are the Ranks distributed on Lichess.org?"),
+            dcc.Graph(id='option1-chart-2', figure=rank_distribution, config=config)])
 
-            )
-        ])
     elif pathname == '/options/option3':
         with open("1_a_castling_early_VIOLIN.json", "r") as file:
             fig1_a = pio.from_json(file.read())
@@ -297,148 +253,11 @@ def update_graph(pathname):
                    style=custom_styles['nav_link']),
 
         ])
-    elif pathname == '/options/option6':
-        return html.Div([
-            dcc.Graph(
-                id='option6-chart',
-                figure={
-                    'data': [
-                        go.Pie(
-                            labels=['Category A', 'Category B', 'Category C'],
-                            values=[40, 30, 20],
-                            name='Option 6 Data',
-                        ),
-                    ],
-                    'layout': {
-                        'title': 'Option 6 Chart',
-                    },
-                }),
-            dcc.Graph(
-                id='option6-chart',
-                figure={
-                    'data': [
-                        go.Pie(
-                            labels=['Category A', 'Category B', 'Category C'],
-                            values=[40, 30, 20],
-                            name='Option 6 Data',
-                        ),
-                    ],
-                    'layout': {
-                        'title': 'Option 6 Chart',
-                    },
-                }),
-            dcc.Graph(
-                id='option6-chart',
-                figure={
-                    'data': [
-                        go.Pie(
-                            labels=['Category A', 'Category B', 'Category C'],
-                            values=[40, 30, 20],
-                            name='Option 6 Data',
-                        ),
-                    ],
-                    'layout': {
-                        'title': 'Option 6 Chart',
-                    },
-                }
-            )
-        ])
-    elif pathname == '/options/option7':
-        return html.Div([
-            dcc.Graph(
-                id='option7-chart',
-                figure={
-                    'data': [
-                        go.Pie(
-                            labels=['Category A', 'Category B', 'Category C'],
-                            values=[40, 30, 20],
-                            name='Option 7 Data',
-                        ),
-                    ],
-                    'layout': {
-                        'title': 'Option 7 Chart',
-                    },
-                }),
-            dcc.Graph(
-                id='option7-chart',
-                figure={
-                    'data': [
-                        go.Pie(
-                            labels=['Category A', 'Category B', 'Category C'],
-                            values=[40, 30, 20],
-                            name='Option 7 Data',
-                        ),
-                    ],
-                    'layout': {
-                        'title': 'Option 7 Chart',
-                    },
-                }),
-            dcc.Graph(
-                id='option7-chart',
-                figure={
-                    'data': [
-                        go.Pie(
-                            labels=['Category A', 'Category B', 'Category C'],
-                            values=[40, 30, 20],
-                            name='Option 7 Data',
-                        ),
-                    ],
-                    'layout': {
-                        'title': 'Option 7 Chart',
-                    },
-                }
-            )
-        ])
-    elif pathname == '/options/option8':
-        return html.Div([
-            dcc.Graph(
-                id='option8-chart',
-                figure={
-                    'data': [
-                        go.Pie(
-                            labels=['Category A', 'Category B', 'Category C'],
-                            values=[40, 30, 20],
-                            name='Option 8 Data',
-                        ),
-                    ],
-                    'layout': {
-                        'title': 'Option 8 Chart',
-                    },
-                }),
-            dcc.Graph(
-                id='option8-chart',
-                figure={
-                    'data': [
-                        go.Pie(
-                            labels=['Category A', 'Category B', 'Category C'],
-                            values=[40, 30, 20],
-                            name='Option 8 Data',
-                        ),
-                    ],
-                    'layout': {
-                        'title': 'Option 8 Chart',
-                    },
-                }),
-            dcc.Graph(
-                id='option8-chart',
-                figure={
-                    'data': [
-                        go.Pie(
-                            labels=['Category A', 'Category B', 'Category C'],
-                            values=[40, 30, 20],
-                            name='Option 8 Data',
-                        ),
-                    ],
-                    'layout': {
-                        'title': 'Option 8 Chart',
-                    },
-                }
-            )
-        ])
+
     else:
         raise PreventUpdate
 
 
 if __name__ == '__main__':
-    webbrowser.open_new_tab('http://localhost:8050')
     app.run_server(debug=True)
+
