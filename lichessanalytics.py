@@ -173,7 +173,7 @@ def display_page(pathname):
 def update_graph(pathname):
     if pathname == '/':
         return html.Div([
-            html.H3("About us ", style={'font-size': '24px'}),
+            html.H3("About our project", style={'font-size': '24px'}),
             html.P("Lichess.org is a free online chess website, that facilitates matches"
                    "against random players all over the world."
                    "Games are available in different Game-Modes, including Bullet, Blitz,"
