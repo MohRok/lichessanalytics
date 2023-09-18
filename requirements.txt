@@ -12,20 +12,3 @@ requests
 pandas
 
 
-#
-# Example requirements
-#
-
-# all examples
-matplotlib
-
-# frequency example
-multidict
-
-# wordcloud_cn example
-jieba
-scipy
-
-# arabic example
-python-bidi
-arabic_reshaper
