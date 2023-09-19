@@ -197,7 +197,8 @@ def update_graph(pathname):
                    "Our project is aimed at answering some questions regarding players’ "
                    "improvement and game strategies. For this purpose we analyzed"
                    "approximately 32,000 high-rated rapid games, "
-                   "roughly 122,000 amateur rapid matches and almost 700,000 high-rated blitz games. ")])
+                   "roughly 122,000 amateur rapid matches and almost 700,000 high-rated blitz games. "),
+            html.Img(src="/assets/schachbrett.png", alt="foto", width="100%", lang="100%"),])
 
     elif pathname == '/options/option0':
         # Display content for Option 0: Distributions on Lichess
@@ -254,10 +255,19 @@ def update_graph(pathname):
         return html.Div([
             html.H3("Does castling early help to win a match?"),
             dcc.Graph(id='option3-chart-1', figure=fig1_a),
+            html.P("The violin graph demonstrates that the number of won and lost games if castled at any given move "
+                   "is almost the same. Meaning castling early, would result in closely the same number of won and "
+                   "lost games.", style={"direction": "ltr", "text-align": "left"}),
             html.H3("Do the games in which the rooks are activated early result in a win?"),
             dcc.Graph(id='option3-chart-2', figure=fig2_a),
+            html.P("This violin graph shows that activating a rook at any given move results in almost the same number "
+                   "of won and lost games.", style={"direction": "ltr", "text-align": "left"}),
             html.H3("Castling on which side results in a win? How does castling affect the outcome of a game?"),
-            dcc.Graph(id='option3-chart-3', figure=fig3_a)])
+            dcc.Graph(id='option3-chart-3', figure=fig3_a),
+            html.P("This bar chart shows that in the most games the players castled short, but there close to no "
+                   "difference in the win rate among the castle types. Though there are slightly more won games in "
+                   "the case of short castle compared to the long castle and there are slightly more lost games if "
+                   "castle was not performed.", style={"direction": "ltr", "text-align": "left"})])
 
     elif pathname == '/options/option4':
         # Display content for Option 4: Bishops vs Knights
@@ -269,6 +279,10 @@ def update_graph(pathname):
         return html.Div([
             html.H3("Does having bishops or knights during an endgame result in a win?"),
             dcc.Graph(id='option4-chart-1', figure=fig4_a),
+            html.P("One of the takeaways from this graph might be that using both knights and bishops independent of "
+                   "constellation (bishops/knights only, bishop and knights used together) helps win the game. There "
+                   "seems to be no evidence to knight or bishops being more useful in an endgame than the other. ",
+                   style={"direction": "ltr", "text-align": "left"}),
             dcc.Graph(id='option4-chart-1', figure=fig4_b),
         ])
 
@@ -285,12 +299,22 @@ def update_graph(pathname):
 
             html.H3("What openings are played by the groups of players belonging to different game modes?"),
             dcc.Graph(id='option5-chart-1', figure=fig5_a),
+            html.P("It is evident that blitz and rapid players prefer different opening types. This could be "
+                   "explained by some openings being more straightforward and manageable when time is short, "
+                   "though to confirm this the nature of the openings used must be studied further. Furthermore, "
+                   "the prefer ability of flank, semi-open and closed games are roughly the same, while highly-rated "
+                   "blitz and rapid players employ more indian games compared to amateur players (the right-most "
+                   "chart) . ", style={"direction": "ltr", "text-align": "left"}),
             html.H3("What openings are played by the groups of players belonging to different rating categories?"),
             dcc.Graph(id='option5-chart-2', figure=fig6_a),
             dcc.Graph(id='option5-chart-3', figure=fig6_b),
-            html.P("Visit this link for information about openings categorization."),
+            html.P("This graph, similar to the pie chart above, confirms that higher-rated players would rather "
+                   "employ semi-open and Indian games compared to the players with the rating below 2000.",
+                   style={"direction": "ltr", "text-align": "left"}),
+            html.P("Visit this link for information about openings categorization.",
+                   style={"color": "black", "margin-right": "center", "font-weight": "bold"}),
             html.A('https://www.chessprogramming.org/ECO', href='https://www.chessprogramming.org/ECO',
-                   style=custom_styles['nav_link']),
+                   style={"text-decoration": "line", "color": "blue", "margin-right": "60px", "font-weight": "bold"}),
 
         ])
 
@@ -304,3 +328,4 @@ if __name__ == '__main__':
     # webbrowser.open_new_tab('http://localhost:8050')
     # Start the Dash app and host it locally on http://localhost:8050 for local development
     app.run_server(debug=True)
+
