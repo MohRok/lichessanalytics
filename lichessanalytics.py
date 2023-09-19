@@ -74,7 +74,7 @@ app.layout = html.Div([
 # Define the layout of the home page content
 home_layout = html.Div([
     html.Div([
-        html.H1("Welcome to Data Science Project Lichess Page", style={'margin-right': '30%'}),
+        html.H1("Welcome to Data Science Project Lichess Page", style={'margin-right': '10%'}),
     ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center'}),
     html.P("Team: Michel, Mohamad, Viktoria.", style={'font-size': '24px'}),
 ], style={'background-image': 'linear-gradient(to bottom, gray, white)', 'color': 'black', 'padding': '10px'})
