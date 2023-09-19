@@ -207,8 +207,13 @@ def update_graph(pathname):
         return html.Div([
             html.H3("How is the rating distributed on Lichess.org?"),
             dcc.Graph(id='option0-chart-1', figure=rating_distribution, config=config),
+            html.P("The players in our set are distributed in a normal distribution, as expected from the Elo "
+                   "algorithm.", style={"direction": "ltr", "text-align": "left"}),
             html.H3("How many games have the players played?"),
-            dcc.Graph(id='option0-chart-2', figure=games_distribution, config=config)])
+            dcc.Graph(id='option0-chart-2', figure=games_distribution, config=config),
+            html.P("Since the accounts are free, many are abandoned after just a few games. This graph can also be "
+                   "described as an exponential decay curve. For our further analysis, we have excluded all accounts "
+                   "with an insufficient number of games played.", style={"direction": "ltr", "text-align": "left"})])
 
     elif pathname == '/options/option1':
         # Display content for Option 1: Rating Correlation
@@ -222,10 +227,20 @@ def update_graph(pathname):
         return html.Div([
             html.H3("How many games have players of different elo-ratings played?"),
             dcc.Graph(id='option1-chart-1', figure=number_of_games_fig, config=config),
+            html.P("The average number of games played rises until 1903 and drops off again afterwards. This could be "
+                   "because high-rated players have trouble finding worthy opponents, or it might be that "
+                   "medium-rated players use Lichess to train, while high-skilled players might have already trained "
+                   "outside of Lichess.", style={"direction": "ltr", "text-align": "left"}),
             html.H3("How many puzzles have players of different elo-ratings solved?"),
             dcc.Graph(id='option1-chart-2', figure=number_of_puzzles, config=config),
+            html.P("Puzzles can be used for chess training. We see a distribution similar to the number of games "
+                   "played. The number of puzzles solved rises until a rating of 2043 and declines again after that.",
+                   style={"direction": "ltr", "text-align": "left"}),
             html.H3("How high of a puzzle-rating do players of different elo-ratings have?"),
-            dcc.Graph(id='option1-chart-3', figure=puzzle_rating, config=config)])
+            dcc.Graph(id='option1-chart-3', figure=puzzle_rating, config=config),
+            html.P("There's a strong correlation between the Rapid-Chess-Rating and the Puzzle-Rating. Players who "
+                   "are good at chess are almost always also good at puzzles.",
+                   style={"direction": "ltr", "text-align": "left"})])
 
     elif pathname == '/options/option2':
         # Display content for Option 2: Rating History
@@ -237,6 +252,12 @@ def update_graph(pathname):
         return html.Div([
             html.H3("How did the average Rating of the Ranks develop over time?"),
             dcc.Graph(id='option1-chart-1', figure=rating_history_ranks, config=config),
+            html.P("Every account starts with a rating of 1500 on day 1. After that, there is a provisional period of "
+                   "a few games during which the rating can change rapidly. Afterwards, the rating only changes a "
+                   "small amount with each game. We observe that only the top-rated players can consistently improve "
+                   "their ratings over time. For medium-rated players, the rating stagnates after a three-year rise, "
+                   "and for low-rated players, the rating rises for three years and then slowly declines afterwards.",
+                   style={"direction": "ltr", "text-align": "left"}),
             html.H3("How are the Ranks distributed on Lichess.org?"),
             dcc.Graph(id='option1-chart-2', figure=rank_distribution, config=config)])
 
