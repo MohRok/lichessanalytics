@@ -186,19 +186,16 @@ def update_graph(pathname):
         # Display information about the project on the home page
         return html.Div([
             html.H3("About our project", style={'font-size': '24px'}),
-            html.P("Lichess.org is a free online chess website, that facilitates matches"
-                   "against random players all over the world."
-                   "Games are available in different Game-Modes, including Bullet, Blitz,"
-                   "Classical and Rapid."
-                   "The main difference between them is their duration."
-                   "For our analysis we have mainly focused on the game-mode Rapid,"
-                   "where players only have 10 minutes each to make all of their moves in the entire game."
-                   "A player loses if their king is checkmated or if they run out of time."
-                   "Our project is aimed at answering some questions regarding players’ "
-                   "improvement and game strategies. For this purpose we analyzed"
-                   "approximately 32,000 high-rated rapid games, "
-                   "roughly 122,000 amateur rapid matches and almost 700,000 high-rated blitz games. "),
-            html.Img(src="/assets/schachbrett.png", alt="foto", width="100%", lang="100%"),])
+            html.P("Lichess.org is a free online chess website, that facilitates matches against random players all "
+                   "over the world. Games are available in different Game-Modes, including Bullet (< 3 minutes "
+                   "games), Blitz (3-5 minutes games), Rapid (10-15 minutes games) and Classical. The main difference "
+                   "between them is their duration. For our analysis we have mainly focused on the game-mode Rapid, "
+                   "where players only have 10 minutes each to make all of their moves in the entire game. A player "
+                   "loses if their king is checkmated or if they run out of time. Our project is aimed at answering "
+                   "some questions regarding players’ improvement and game strategies. For this purpose we analyzed "
+                   "approximately 32,000 high-rated rapid games, roughly 122,000 amateur rapid matches and almost "
+                   "700,000 high-rated blitz games. "),
+            html.Img(src="/assets/schachbrett.png", alt="foto", width="100%", lang="100%"), ])
 
     elif pathname == '/options/option0':
         # Display content for Option 0: Distributions on Lichess
