@@ -162,7 +162,7 @@ render login
 For more information and detailed documentation, visit the [Render documentation](https://render.com/docs/).
 
 
-### Hosting Information
+### Our Website
 
 This web application is hosted on Render. You can access it at [https://lichessanalytics.onrender.com](https://lichessanalytics.onrender.com).
 
