@@ -10,7 +10,7 @@ Usage:
 
 """
 # Import necessary libraries
-# import webbrowser  # Import the webbrowser module for opening the web application on localhost.
+import webbrowser  # Import the webbrowser module for opening the web application on localhost.
 from dash import Dash, dcc, html, Input, Output
 import plotly.io as pio
 from dash.exceptions import PreventUpdate
@@ -49,7 +49,7 @@ app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content'),
     html.Div([
-        html.Img(src="/assets/lichesslogo.png", alt="foto", width="15%", lang="15%",
+        html.Img(src="/assets/lichesslogo.png", alt="foto", width="10%", lang="10%",
                  style={'position': 'absolute', 'top': '0px', 'right': '0px'}),
     ]),
     # Navigation bar
@@ -343,7 +343,7 @@ def update_graph(pathname):
 
 if __name__ == '__main__':
     # Open a new tab in the web browser to access the locally hosted web application
-    # webbrowser.open_new_tab('http://localhost:8050')
+    webbrowser.open_new_tab('http://localhost:8050')
     # Start the Dash app and host it locally on http://localhost:8050 for local development
     app.run_server(debug=True)
 
