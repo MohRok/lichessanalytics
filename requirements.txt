@@ -1,7 +1,0 @@
-gunicorn
-dash
-plotly
-requests
-pandas
-
-
